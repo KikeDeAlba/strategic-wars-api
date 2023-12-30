@@ -1,0 +1,8 @@
+{
+    "imports": {
+        "@/": "./src/",
+        "@app/": "./src/app/",
+        "@types/": "./src/types/",
+        "db": "./src/services/db.ts"
+      }
+}
