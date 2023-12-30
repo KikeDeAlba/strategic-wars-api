@@ -1,5 +1,6 @@
 import { Hono } from "https://deno.land/x/hono@v3.11.10/mod.ts"
 import { logger } from "https://deno.land/x/hono@v3.11.11/middleware.ts"
+import { partyRouter } from "@/app/routers/party.ts";
 
 export const app = new Hono()
 
@@ -7,3 +8,4 @@ export const app = new Hono()
 app.use('*', logger())
 
 app.get('/', (c) => c.text('Hello Deno!'))
+app.route('/party', partyRouter)
