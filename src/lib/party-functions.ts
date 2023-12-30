@@ -23,46 +23,46 @@ export const createParty = async (leaderName: string) => {
 }
 
 export const joinParty = async (code: string, name: string) => {
-    const party = await db.get(['party', code])
-    const partyParse = Party.parse(party)
+    const {value} = await db.get(['party', code])
+    const party = Party.parse(value)
 
     const member = {
         id: crypto.randomUUID(),
         name
     }
 
-    partyParse.members.others.push(member)
+    party.members.others.push(member)
 
     await db.set(['party', code], party)
 
-    return partyParse
+    return party
 }
 
 export const leaveParty = async (code: string, memberId: string) => {
-    const party = await db.get(['party', code])
-    const partyParse = Party.parse(party)
+    const {value} = await db.get(['party', code])
+    const party = Party.parse(value)
 
-    partyParse.members.others = partyParse.members.others.filter(member => member.id !== memberId)
+    party.members.others = party.members.others.filter(member => member.id !== memberId)
 
     await db.set(['party', code], party)
 
-    return partyParse
+    return party
 }
 
 export const transferLeader = async (code: string, memberId: string) => {
-    const party = await db.get(['party', code])
-    const partyParse = Party.parse(party)
+    const { value } = await db.get(['party', code])
+    const party = Party.parse(value)
 
-    const oldLeader = partyParse.members.leader
-    const newLeader = partyParse.members.others.find(member => member.id === memberId)
+    const oldLeader = party.members.leader
+    const newLeader = party.members.others.find(member => member.id === memberId)
 
     if (newLeader) {
-        partyParse.members.leader = newLeader
-        partyParse.members.others = partyParse.members.others.filter(member => member.id !== memberId)
-        partyParse.members.others.push(oldLeader)
+        party.members.leader = newLeader
+        party.members.others = party.members.others.filter(member => member.id !== memberId)
+        party.members.others.push(oldLeader)
     }
 
     await db.set(['party', code], party)
 
-    return partyParse
+    return party
 }
