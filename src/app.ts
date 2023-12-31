@@ -1,6 +1,7 @@
 import { Hono } from "https://deno.land/x/hono@v3.11.10/mod.ts"
 import { logger, serveStatic } from "https://deno.land/x/hono@v3.11.11/middleware.ts"
 import { partyRouter } from "@/app/routers/party.ts";
+import { mapsRouter } from "@/app/routers/maps.ts";
 
 export const app = new Hono()
 
@@ -17,7 +18,7 @@ const readPublic = async (path = './public') => {
             await readPublic(`${path}/${file.name}`)
         }
 
-        console.log(path, file.name)
+        // console.log(path, file.name)
     }
 }
 
@@ -28,3 +29,4 @@ app.use('*', logger())
 
 app.get('/', (c) => c.text('Hello Deno!'))
 app.route('/party', partyRouter)
+app.route('/maps', mapsRouter)

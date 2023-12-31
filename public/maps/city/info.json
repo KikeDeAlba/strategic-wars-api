@@ -1,4 +1,5 @@
 {
+    "icon": "public/maps/city/icon.png",
     "name": "city",
     "version": "1.0.0",
     "description": "This is a city map.",
