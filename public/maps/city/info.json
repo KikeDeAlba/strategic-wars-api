@@ -1,0 +1,26 @@
+{
+    "name": "city",
+    "version": "1.0.0",
+    "description": "This is a city map.",
+    "author": "Akoz",
+    "social": [
+        {
+            "name": "twitter",
+            "url": "https://twitter.com/kikedealbau_u"
+        },
+        {
+            "name": "github",
+            "url": "https://github.com/KikeDeAlba"
+        }
+    ],
+    "schema": [
+        ["grass", "grass"],
+        ["grass", "camp"]
+    ],
+    "textures": {
+        "grass": "public/maps/city/textures/grass.png",
+        "camp": "public/maps/city/textures/camp.png"
+    },
+    "with": 20,
+    "height": 20
+}
