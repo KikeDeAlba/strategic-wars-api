@@ -19,7 +19,10 @@ export const createParty = async (leaderName: string) => {
 
     await db.set(['party', code], party)
 
-    return code
+    return {
+        party,
+        playerId: leader.id
+    }
 }
 
 export const joinParty = async (code: string, name: string) => {
@@ -35,7 +38,10 @@ export const joinParty = async (code: string, name: string) => {
 
     await db.set(['party', code], party)
 
-    return party
+    return {
+        party,
+        playerId: member.id
+    }
 }
 
 export const leaveParty = async (code: string, memberId: string) => {
