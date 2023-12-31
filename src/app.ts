@@ -4,7 +4,7 @@ import { partyRouter } from "@/app/routers/party.ts";
 
 export const app = new Hono()
 
-const readPublic = async (path: string = './public') => {
+const readPublic = async (path = './public') => {
     const publicFiles = Deno.readDir(path)
     
     for await (const file of publicFiles) {
