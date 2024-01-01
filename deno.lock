@@ -1,7 +1,8 @@
 {
   "version": "3",
   "redirects": {
-    "https://deno.land/x/hono/helper.ts": "https://deno.land/x/hono@v3.11.11/helper.ts"
+    "https://deno.land/x/hono/helper.ts": "https://deno.land/x/hono@v3.11.11/helper.ts",
+    "https://deno.land/x/hono/middleware.ts": "https://deno.land/x/hono@v3.11.11/middleware.ts"
   },
   "remote": {
     "https://deno.land/std@0.210.0/assert/assert.ts": "e265ad50a9341f3b40e51dd4cb41ab253d976943ba78a977106950e52e0302ab",

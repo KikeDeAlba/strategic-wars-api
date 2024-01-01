@@ -5,13 +5,11 @@ export const mapsRouter = new Hono()
 mapsRouter.get('/', async (c) => {
     const maps = await Deno.readDir('./public/maps')
 
-    const mapList = ['']
+    const mapList = []
 
     for await (const map of maps) {
-        Deno.readTextFile(`./public/maps/${map.name}`)
-            .then((mapData) => {
-                mapList.push(JSON.parse(mapData))
-            })
+        const mapInfo = await Deno.readTextFile(`./public/maps/${map.name}/info.json`)
+        mapList.push(JSON.parse(mapInfo))
     }
 
     return c.json(mapList)
