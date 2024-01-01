@@ -25,7 +25,7 @@ partyRouter.post('/', async (c) => {
         return c.json({
             party,
             playerId
-        }, 201)
+        })
     } catch (e) {
         saveError(e)
             .catch(() => {
