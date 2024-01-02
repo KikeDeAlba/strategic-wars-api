@@ -14,7 +14,8 @@ export const createParty = async (leaderName: string) => {
         members: {
             leader,
             others: []
-        }
+        },
+        started: false
     })
 
     await db.set(['party', code], party)

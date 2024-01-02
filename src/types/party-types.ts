@@ -10,5 +10,6 @@ export const Party = z.object({
     members: z.object({
         leader: PartyMember,
         others: z.array(PartyMember)
-    })
+    }),
+    started: z.boolean()
 })
